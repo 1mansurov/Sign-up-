@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Jomolhari", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background: #000;
+    margin: 52px 75px 52px 36px;
+}
+
+.wrapper {
+    display: flex;
+    margin: 0 auto;
+    gap: 47px;
+
+}
+
+.dashbord>h3 {
+    margin-bottom: 25px;
+    font-size: 30px;
+    padding: 21px 68px 25px 57px;
+}
+
+.dashbord {
+    /* margin: 0 auto; */
+    border-radius: 31px;
+    max-width: 270px;
+    min-height: 920px;
+    background: #F5C147;
+    text-align: center;
+    padding: 0px 20px;
+    text-align: left;
+}
+
+.avatar {
+    padding: 15px;
+    height: 85px;
+    background: #fff;
+    border-radius: 22px;
+    margin-bottom: 37px;
+}
+
+.dashbord>button {
+    padding: 14px 91px 14px 32px;
+    background: #000;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 550px;
+    cursor: pointer;
+}
+
+.dashbord>a {
+    text-decoration: none;
+    margin-left: 79px;
+    color: #000;
+
+}
+
+
+.create {
+    /* margin: 0 auto; */
+    width: 100%;
+    max-width: 1012px;
+    height: 920px;
+    /* background: red; */
+}
+
+.create>h3 {
+    font-size: 30px;
+    color: white;
+    margin: 34px 786px 16px 0;
+
+}
+
+.create>p {
+    font-size: 20px;
+    margin-top: 37px;
+    margin-bottom: 7px;
+    color: #fff;
+}
+
+.postInput{
+   width: 100%;
+   max-width: 1012px;
+   min-height: 44px;
+   border: none;
+   border-radius: 15px;
+   padding-left: 15px;
+   padding-right: 15px;
+}
+
+.create__content{
+    display: flex;
+    gap: 447px;
+}
+
+.create__content>p{
+    margin-top: 25px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.create__input{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    /* gap: 365px; */
+    
+}
+
+.post__input {
+    width: 100%;
+    max-width: 400px;
+    height: 44px;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: #000;
+}
+
+.tag__input{
+    width: 100%;
+    max-width: 270px;
+    height: 44px;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: #000;
+    
+}
+
+.create__input > button{
+    width: 100%;
+    max-width: 80px;
+    height: 40px;
+    background: #F5C147;
+    border-radius: 76px;
+    border: #000;
+    cursor: pointer;
+}
+
+.description__input{
+    width: 100%;
+    max-width: 1012px;
+    height: 172px;
+    margin: 7px 75px 52px 0;
+    /* font-size: 10px; */
+    
+}
+
+.post__description{
+   width: 100%;
+   padding: 10px;
+   outline: none;
+   font-weight: bold;
+   border-radius: 22px;
+}
+
+.k{
+    margin: 68px 382px 258px 382px;
+    padding: 16px 73px 16px 73px;
+    background: #F5C147;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    
+}
+
