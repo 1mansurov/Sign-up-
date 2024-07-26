@@ -14,7 +14,7 @@ const loginUser = (e) => {
     signBtn.setAttribute("disabled", true);
     signBtn.textContent = "Log In...";
 
-    fetch("https://blogpost-server-production-d92d.up.railway.app/api/v1/user/login", {
+    fetch("https://blog-post-production-b61c.up.railway.app/api/v1/user/login", {
         method: "POST",
         headers: {
             'Content-Type': "application/json"
@@ -25,6 +25,8 @@ const loginUser = (e) => {
         .then(data => {
             localStorage.setItem("access_token", data.data.token)
             if (data.status == "success") {
+                localStorage.setItem("access_token", data.data.token);
+                localStorage.setItem("user", JSON.stringify(data.data.user));
                 signBtn.textContent = "Success";
                 console.log(data);
                 window.location.href = "../pages/dashbord.html";

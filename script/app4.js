@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.setAttribute('disabled', true);
         submitBtn.textContent = 'Registering...';
 
-        fetch('https://blogpost-server-production-d92d.up.railway.app/api/v1/user/register', {
+        fetch('https://blog-post-production-b61c.up.railway.app/api/v1/user/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.removeAttribute('disabled');
             console.log(data);
             if (data.status === 'success') {
-                signupForm.reset(); // Formani tozalash
+                signupForm.reset(); 
                 alert('You have successfully registered!');
                 location.replace('../pages/index3.html');
             } else {

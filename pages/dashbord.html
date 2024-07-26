@@ -1,53 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jomolhari&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jomolhari&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
-    <link rel="stylesheet" href="../css/dashbord.css">
-</head>
+    <link rel="stylesheet" href="../css/dashbord.css" />
+  </head>
 
-<body>
+  <body>
     <div class="wrapper">
-        <div class="dashbord">
-            <h3>Dashboard</h3>
-            <div class="avatar">
-                <p class="user__name">Mansurov Abdulloh</p>
-                <small class="name" style="color: gray;">Author</small>
-            </div>
-            <button class="create__post">
-                <p>Create Post</p>
-            </button>
-            <a href="../pages/index4.html">Sign Out?</a>
-
+      <div class="dashbord">
+        <h3>Dashboard</h3>
+        <div class="avatar">
+          <p class="user__name">Mansurov Abdulloh</p>
+          <small class="user__email" style="color: gray">Author</small>
         </div>
-        <div class="create">
-            <h3>Create New Post</h3>
-            <hr>
-            <form class="formula">
-                <p>Post title</p>
-                <input class="postInput" type="text">
-                <div class="create__content">
-                    <p>Post image</p>
-                    <p>Post tag</p>
-                </div>
-                <div class="create__input">
-                    <input class="post__input" type="text">
-                    <input class="tag__input" type="text">
-                    <button class="btn">Add</button>
-                </div>
-                <p>Post description</p>
-                <textarea class="post__description" name="" id="" cols="30" rows="10"></textarea>
-                <button class="k">Create Post</button>
-            </form>
-        </div>
+        <button class="create__post">
+          <p>Create Post</p>
+        </button>
+        <a href="../pages/index4.html">Sign Out?</a>
+      </div>
+      <div class="create">
+        <h3>Create New Post</h3>
+        <hr />
+        <form class="formula">
+          <p>Post title</p>
+          <input class="postInput" type="text" />
+          <div class="create__content">
+            <p>Post image</p>
+            <p>Post tag</p>
+          </div>
+          <div class="create__input">
+            <input class="post__input" type="url" />
+            <input class="tag__input" type="text" />
+            <button class="btn">Add</button>
+          </div>
+          <p>Post description</p>
+          <textarea
+            class="post__description"
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+          ></textarea>
+          <button class="k">Create Post</button>
+        </form>
+      </div>
     </div>
 
     <script src="../script/dashbord.js"></script>
-</body>
-
+  </body>
 </html>

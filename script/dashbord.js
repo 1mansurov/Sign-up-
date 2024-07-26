@@ -1,162 +1,82 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector(".formula");
-    const tagBtn = document.querySelector(".btn");
+// Selecting necessary DOM elements
+const authorUsername = document.querySelector(".user__name");
+const authorEmail = document.querySelector(".user__email");
+const form = document.querySelector(".formula");
+const tagBtn = document.querySelector(".btn");
 
-    const postData = {
-        title: "",
-        description: "",
-        image: "",
-        tags: [],
-        author: "",
-    };
+// Initializing the postData object
+const postData = {
+  title: "",
+  description: "",
+  image: "",
+  tags: [],
+  author: "",
+};
 
-    tagBtn.addEventListener("click", function (event) {
-        event.preventDefault();
-        const tag = document.getElementById("tags").value;
-        if (tag && !postData.tags.includes(tag)) {
-            postData.tags.push(tag);
-        }
-    });
-
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const title = event.target[0].value;
-        const description = event.target[1].value;
-        const image = event.target[2].value;
-
-        postData.title = title;
-        postData.description = description;
-        postData.image = image;
-
-        const token = localStorage.getItem("access_token");
-        if (!token) {
-            console.error("Access token not found in localStorage!");
-            return;
-        }
-
-        fetch("https://blogpost-server-production-d92d.up.railway.app/api/v1/blogs", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
-            },
-            body: JSON.stringify(postData),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("Success:", data);
-                if (data.status === "success") {
-                    const signBtn = document.querySelector(".signBtn"); 
-                    console.log(data);
-                    const user = token.split(".");
-                    const userInfo = JSON.parse(atob(user[1]));
-                    const $nameEl = document.querySelector(".user__name");
-                    $nameEl.textContent = userInfo.email;
-                    const $role = document.querySelector(".name");
-                    $role.textContent = userInfo.role;
-                } else {
-                    console.error("Error in response data:", data);
-                }
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
-    });
+// Event listener for adding tags
+tagBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+  const tag = document.getElementById("tags").value;
+  if (tag && !postData.tags.includes(tag)) {
+    postData.tags.push(tag);
+  }
 });
 
+// Getting token and user data from localStorage
+const token = localStorage.getItem("access_token");
+const data = JSON.parse(localStorage.getItem("user"));
 
 
+// Setting author details in the DOM
+if (data) {
+  authorUsername.textContent = data.name;
+  authorEmail.textContent = data.email;
+}
 
 
-// document.addEventListener("DOMContentLoaded", function () {
-//     const form = document.querySelector(".formula");
-//     const tagBtn = document.querySelector(".btn");
+// Logging user data for debugging
+console.log(data);
 
-//     const postData = {
-//         title: "",
-//         description: "",
-//         image: "",
-//         tags: [],
-//         author: "",
-//     };
+// Event listener for form submission
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const title = event.target[0].value;
+  const description = event.target[1].value;
+  const image = event.target[2].value;
 
-//     tagBtn.addEventListener("click", function (event) {
-//         event.preventDefault();
-//         const tag = document.getElementById("tags").value;
-//         if (tag && !postData.tags.includes(tag)) {
-//             postData.tags.push(tag);
-//         }
-//     });
+  // Updating postData object with form values
+  postData.title = title;
+  postData.description = description;
+  postData.image = image;
+  postData.author = data.name; // Setting the author
 
-//     form.addEventListener("submit", function (event) {
-//         event.preventDefault();
-//         const title = event.target[0].value;
-//         const description = event.target[1].value;
-//         const image = event.target[2].value;
-
-//         fetch(
-//             "https://blogpost-server-production-d92d.up.railway.app/api/v1/blogs",
-//             {
-//                 method: "POST",
-//                 headers: {
-//                     "Content-Type": "application/json",
-//                     "Authorization": `bearer ${localStorage.getItem("access_token")}`,
-//                 },
-//                 body: JSON.stringify(postData),
-//             }
-//         )
-//             .then((response) => response.json())
-//             .then((data) => {
-//                 console.log("Success:", data)
-//                 if (data.status == "success") {
-//                     signBtn.textContent = "Success";
-//                     console.log(data);
-//                     let user = token.split(".");
-//                     let userInfo = JSON.parse(atob(user[1]));
-//                     const $nameEl = document.querySelector(".user__name");
-//                     $nameEl.textContent = userInfo.email;
-//                     const $role = document.querySelector(".name");
-//                     $role.textContent = userInfo.role
-                
-                
-                
-//                 } else {
-//                     console.error("Access token not found in localStorage!");
-                
-//                 }
-//             })
-//             .catch((error) => {
-//                 console.error("Error:", error);
-//             });
-//     });
-// });
-
-
-// if (data.status == "success") {
-//     signBtn.textContent = "Success";
-//     console.log(data);
-//     window.location.href = "../pages/index.html";
-//     let user = token.split(".");
-//     let userInfo = JSON.parse(atob(user[1]));
-
-//     const $nameEl = document.querySelector(".user__name");
-//     $nameEl.textContent = userInfo.email;
-//     const $role = document.querySelector(".name");
-//     $role.textContent = userInfo.role
-
-
-
-// } else {
-//     console.log("Access token not found in localStorage!");
-
-// }
-
-
-
-// const $nameEl = document.querySelector(".user__name");
-// $nameEl.textContent = userInfo.email;
-
-// const $role = document.querySelector(".name");
-// $role.textContent = userInfo.role;
+  // Sending the POST request
+  fetch("https://blogpost-server-production-d92d.up.railway.app/api/v1/blogs", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(postData),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+      }
+      return response.json();
+    })
+    .then((responseData) => {
+      console.log("Success:", responseData);
+      if (responseData.status === "success") {
+        // Additional logic for successful response
+        console.log(responseData);
+      } else {
+        console.error("Error in response data:", responseData);
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+});
 
 
